@@ -1,35 +1,38 @@
-// Image Toggle functionality
+// Image Toggle functionality (only on index page)
 const imageToggle = document.getElementById('imageToggle');
 const imageContainer = document.getElementById('imageContainer');
-let imageVisible = false;
 
-// Placeholder images - you can replace these with actual image URLs
-const placeholderImages = [
-    'https://via.placeholder.com/600x400/000000/ffffff?text=Image+1',
-    'https://via.placeholder.com/600x400/ffffff/000000?text=Image+2',
-    'https://via.placeholder.com/600x400/cccccc/000000?text=Image+3'
-];
+if (imageToggle && imageContainer) {
+    let imageVisible = false;
 
-let currentImageIndex = 0;
+    // Placeholder images - you can replace these with actual image URLs
+    const placeholderImages = [
+        'https://via.placeholder.com/600x400/000000/ffffff?text=Image+1',
+        'https://via.placeholder.com/600x400/ffffff/000000?text=Image+2',
+        'https://via.placeholder.com/600x400/cccccc/000000?text=Image+3'
+    ];
 
-imageToggle.addEventListener('click', () => {
-    if (!imageVisible) {
-        // Show image
-        const img = document.createElement('img');
-        img.src = placeholderImages[currentImageIndex];
-        img.alt = 'Toggle image';
-        imageContainer.innerHTML = '';
-        imageContainer.appendChild(img);
-        imageVisible = true;
-        imageToggle.textContent = 'Hide Image';
-    } else {
-        // Hide image
-        imageContainer.innerHTML = '';
-        imageVisible = false;
-        imageToggle.textContent = 'Image Toggle';
-        currentImageIndex = (currentImageIndex + 1) % placeholderImages.length;
-    }
-});
+    let currentImageIndex = 0;
+
+    imageToggle.addEventListener('click', () => {
+        if (!imageVisible) {
+            // Show image
+            const img = document.createElement('img');
+            img.src = placeholderImages[currentImageIndex];
+            img.alt = 'Toggle image';
+            imageContainer.innerHTML = '';
+            imageContainer.appendChild(img);
+            imageVisible = true;
+            imageToggle.textContent = 'Hide Image';
+        } else {
+            // Hide image
+            imageContainer.innerHTML = '';
+            imageVisible = false;
+            imageToggle.textContent = 'Image Toggle';
+            currentImageIndex = (currentImageIndex + 1) % placeholderImages.length;
+        }
+    });
+}
 
 // Back to Top functionality
 const backToTop = document.getElementById('backToTop');
@@ -49,17 +52,5 @@ backToTop.addEventListener('click', () => {
     });
 });
 
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
+// Note: Smooth scrolling for anchor links removed since we're using separate pages now
 
