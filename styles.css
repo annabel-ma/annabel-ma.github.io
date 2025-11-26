@@ -88,9 +88,9 @@ body {
 }
 
 .image-gallery {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
     max-width: 100%;
     margin-top: 1rem;
 }
@@ -100,10 +100,10 @@ body {
 }
 
 .image-item img {
-    width: 70%;
-    max-width: 600px;
+    width: 100%;
     height: auto;
     display: block;
+    object-fit: cover;
 }
 
 main {
@@ -123,9 +123,8 @@ main {
 .links {
     margin: 1rem 0;
     display: flex;
-    justify-content: space-between;
-    width: 100%;
-    gap: 1rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
 }
 
 .links a {
