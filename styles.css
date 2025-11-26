@@ -118,6 +118,24 @@ main {
     max-width: 800px;
 }
 
+.links {
+    margin: 2rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.links a {
+    color: #000000;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: opacity 0.3s ease;
+}
+
+.links a:hover {
+    opacity: 0.6;
+}
+
 .image-toggle-container {
     margin-bottom: 3rem;
 }
