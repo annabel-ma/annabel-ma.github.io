@@ -90,11 +90,12 @@ body {
     text-transform: lowercase;
     cursor: pointer;
     padding: 0;
-    margin-top: 1rem;
+    margin: 0;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     transition: opacity 0.3s ease;
     display: block;
     text-align: left;
+    width: 100%;
 }
 
 .dark-mode-btn:hover {
@@ -117,13 +118,10 @@ body.dark-mode .content-area {
 
 body.dark-mode .title-link,
 body.dark-mode .nav-menu a,
-body.dark-mode .dark-mode-btn {
-    color: #ffffff;
-}
-
+body.dark-mode .dark-mode-btn,
 body.dark-mode .section p,
 body.dark-mode .links a {
-    color: #ffffff;
+    color: #ffffff !important;
 }
 
 .content-area {

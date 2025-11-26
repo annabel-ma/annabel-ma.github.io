@@ -53,10 +53,27 @@ backToTop.addEventListener('click', () => {
 });
 
 // Dark mode toggle functionality
-document.addEventListener('DOMContentLoaded', () => {
+function initDarkMode() {
     const darkModeToggle = document.getElementById('darkModeToggle');
     const body = document.body;
-    const imageItems = document.querySelectorAll('.image-item img');
+    
+    function updateImages(isDark) {
+        const imageItems = document.querySelectorAll('.image-item img');
+        if (isDark) {
+            // Dark mode: use fig.jpg for all images
+            imageItems.forEach(img => {
+                img.src = 'photos/fig.jpg';
+            });
+        } else {
+            // Light mode: restore original season images
+            const seasonImages = ['winter.jpg', 'spring.jpg', 'summer.jpg', 'fall.jpg'];
+            imageItems.forEach((img, index) => {
+                if (seasonImages[index]) {
+                    img.src = `photos/${seasonImages[index]}`;
+                }
+            });
+        }
+    }
 
     if (darkModeToggle) {
         // Check for saved dark mode preference
@@ -64,10 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (isDarkMode) {
             body.classList.add('dark-mode');
-            // Switch all images to fig.jpg
-            imageItems.forEach(img => {
-                img.src = 'photos/fig.jpg';
-            });
+            updateImages(true);
         }
 
         darkModeToggle.addEventListener('click', () => {
@@ -78,21 +92,17 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('darkMode', isDark);
             
             // Switch images
-            if (isDark) {
-                // Dark mode: use fig.jpg for all images
-                imageItems.forEach(img => {
-                    img.src = 'photos/fig.jpg';
-                });
-            } else {
-                // Light mode: restore original season images
-                const seasonImages = ['winter.jpg', 'spring.jpg', 'summer.jpg', 'fall.jpg'];
-                imageItems.forEach((img, index) => {
-                    img.src = `photos/${seasonImages[index]}`;
-                });
-            }
+            updateImages(isDark);
         });
     }
-});
+}
+
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDarkMode);
+} else {
+    initDarkMode();
+}
 
 // Note: Smooth scrolling for anchor links removed since we're using separate pages now
 
