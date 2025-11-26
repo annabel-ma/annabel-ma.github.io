@@ -10,14 +10,54 @@ body {
     color: #000000;
     line-height: 1.6;
     min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.layout-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    min-width: 250px;
     padding: 2rem;
+    background-color: #ffffff;
+    border-right: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.site-title {
+    margin-bottom: 3rem;
+}
+
+.site-title h1 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-transform: lowercase;
+    line-height: 1.4;
+}
+
+.title-line {
+    display: block;
+    letter-spacing: 0.15em;
+}
+
+.title-link {
+    color: #000000;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+    display: block;
+}
+
+.title-link:hover {
+    opacity: 0.6;
 }
 
 .nav-menu {
-    position: fixed;
-    top: 2rem;
-    right: 2rem;
-    z-index: 1000;
+    margin-top: 0;
 }
 
 .nav-menu ul {
@@ -25,6 +65,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    padding: 0;
 }
 
 .nav-menu a {
@@ -33,10 +74,34 @@ body {
     font-size: 0.9rem;
     text-transform: lowercase;
     transition: opacity 0.3s ease;
+    display: block;
 }
 
 .nav-menu a:hover {
     opacity: 0.6;
+}
+
+.content-area {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+.image-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 100%;
+}
+
+.image-item {
+    width: 100%;
+}
+
+.image-item img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 main {
@@ -45,29 +110,12 @@ main {
     padding-top: 4rem;
 }
 
-.site-title {
-    margin-bottom: 3rem;
-}
-
-.site-title h1 {
-    font-size: 2rem;
-    font-weight: 300;
-    letter-spacing: 0.1em;
-    text-transform: lowercase;
-}
-
-.title-link {
-    color: #000000;
-    text-decoration: none;
-    transition: opacity 0.3s ease;
-}
-
-.title-link:hover {
-    opacity: 0.6;
-}
-
 .content {
-    margin-top: 4rem;
+    margin-top: 0;
+}
+
+.content-area .content {
+    max-width: 800px;
 }
 
 .image-toggle-container {
@@ -159,17 +207,32 @@ main {
 }
 
 @media (max-width: 768px) {
-    body {
-        padding: 1rem;
+    .layout-container {
+        flex-direction: column;
     }
 
-    .nav-menu {
-        top: 1rem;
-        right: 1rem;
+    .sidebar {
+        width: 100%;
+        min-width: auto;
+        padding: 1.5rem;
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .site-title {
+        margin-bottom: 1.5rem;
     }
 
     .site-title h1 {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
+    }
+
+    .content-area {
+        padding: 1.5rem;
+    }
+
+    .image-gallery {
+        gap: 1.5rem;
     }
 
     .back-to-top {
