@@ -73,37 +73,55 @@ function updateImages(isDark) {
 }
 
 // Initialize dark mode
-document.addEventListener('DOMContentLoaded', () => {
+function initDarkMode() {
     const darkModeToggle = document.getElementById('darkModeToggle');
     const body = document.body;
     
-    if (darkModeToggle) {
-        // Check for saved dark mode preference
-        const isDarkMode = localStorage.getItem('darkMode') === 'true';
-        
-        if (isDarkMode) {
-            body.classList.add('dark-mode');
-            updateImages(true);
-        } else {
-            // Ensure light mode images are set
-            updateImages(false);
-        }
-
-        darkModeToggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            body.classList.toggle('dark-mode');
-            const isDark = body.classList.contains('dark-mode');
-            
-            // Save preference
-            localStorage.setItem('darkMode', isDark);
-            
-            // Switch images
-            updateImages(isDark);
-        });
+    console.log('Dark mode toggle element:', darkModeToggle);
+    
+    if (!darkModeToggle) {
+        console.error('Dark mode toggle button not found!');
+        return;
     }
-});
+    
+    // Check for saved dark mode preference
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+    
+    if (isDarkMode) {
+        body.classList.add('dark-mode');
+        updateImages(true);
+    } else {
+        // Ensure light mode images are set
+        updateImages(false);
+    }
+
+    // Add click handler
+    darkModeToggle.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Lightswitch clicked!');
+        
+        body.classList.toggle('dark-mode');
+        const isDark = body.classList.contains('dark-mode');
+        console.log('Dark mode is now:', isDark);
+        
+        // Save preference
+        localStorage.setItem('darkMode', isDark);
+        
+        // Switch images
+        updateImages(isDark);
+        
+        return false;
+    };
+}
+
+// Run when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDarkMode);
+} else {
+    // DOM is already ready
+    initDarkMode();
+}
 
 // Note: Smooth scrolling for anchor links removed since we're using separate pages now
 
