@@ -58,7 +58,12 @@ if (backToTop) {
 const seasonImages = ['photos/winter.jpg', 'photos/spring.jpg', 'photos/summer.jpg', 'photos/fall.jpg'];
 
 function updateImages(isDark) {
+    // Only update images if they exist on the page (i.e., on index.html)
     const imageItems = document.querySelectorAll('.image-item img');
+    if (imageItems.length === 0) {
+        return; // No images on this page, skip image switching
+    }
+    
     if (isDark) {
         // Dark mode: fig.jpg on left, bird.jpg on right
         imageItems.forEach((img, index) => {

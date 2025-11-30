@@ -66,6 +66,12 @@ body {
     flex-direction: column;
     gap: 0.5rem;
     padding: 0;
+    margin: 0;
+}
+
+.nav-menu li {
+    margin: 0;
+    padding: 0;
 }
 
 .nav-menu a {
@@ -266,6 +272,24 @@ main {
     font-size: 0.9rem;
     text-align: left;
     max-width: 100%;
+}
+
+.section ul {
+    list-style: disc;
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+    color: #292929;
+}
+
+.section li {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+    font-size: 0.9rem;
+}
+
+body.dark-mode .section ul,
+body.dark-mode .section li {
+    color: #ffffff;
 }
 
 .back-to-top {
