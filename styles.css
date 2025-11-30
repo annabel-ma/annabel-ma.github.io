@@ -295,24 +295,6 @@ body.dark-mode .section li {
     color: #ffffff;
 }
 
-.section ul {
-    list-style: disc;
-    margin: 1rem 0;
-    padding-left: 1.5rem;
-    color: #292929;
-}
-
-.section li {
-    margin: 0.5rem 0;
-    line-height: 1.6;
-    font-size: 0.9rem;
-}
-
-body.dark-mode .section ul,
-body.dark-mode .section li {
-    color: #ffffff;
-}
-
 
 .back-to-top {
     position: fixed;
